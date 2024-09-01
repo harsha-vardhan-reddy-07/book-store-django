@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block styleLink %}
+
+<link rel="stylesheet" href="/static/css/home.css">
+<link rel="stylesheet" href="/static/css/products.css">
+
+{% endblock %}
+
+{% block content %}
+
+{% include "navbar.html" %}
+
+<div class="HomePage">
+
+      <div class="home-banner" > 
+        <img src="https://media.istockphoto.com/id/1421598429/vector/promo-sale-banner-for-bookstore-bookshop-library-book-lover-ebook.jpg?s=170667a&w=0&k=20&c=4O6M3mkTDn27eeX7NRLROkncBYQQwS5ZGvp6oDODiGg=" alt="" />
+      </div>
+
+      <div class="home-categories-container">
+
+        <a href="/category/Sci-fi">
+          <div class="home-category-card">
+            <img src="https://media.npr.org/assets/img/2021/08/13/81wfmy9oafl_custom-0faf8f17413857547ce59182be61cde0bc373105.jpeg?s=1100&c=50&f=jpeg" alt="" />
+            <h5>Sci-fi</h5>
+          </div>
+        </a>
+
+        <a href="/category/Thriller">
+          <div class="home-category-card" >
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-12/20/0/asset/44f5c58f5188/sub-buzz-5961-1639958921-3.jpg?downsize=900:*&output-format=auto&output-quality=auto" alt="" />
+            <h5>Thriller</h5>
+          </div>
+        </a>
+
+        <a href="/category/Comedy">
+          <div class="home-category-card" >
+            <img src="https://hips.hearstapps.com/hmg-prod/images/51vvdonaoxl-1657721629.jpeg" alt="" />
+            <h5>Comedy</h5>
+          </div>
+        </a>
+
+        <a href="/category/Motivational">
+          <div class="home-category-card" >
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn59uze7yRR-QV8RikDdVeeEiTB7BgGw8JHw&s" alt="" />
+            <h5>Motivational</h5>
+          </div>
+        </a>
+
+        <a href="/category/Biography">
+          <div class="home-category-card">
+            <img src="https://www.collinsdictionary.com/images/full/biography_176902637.jpg" alt="" />
+            <h5>Biography</h5>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="products-container">
+
+
+        <div class="products-body">
+            <h3>All Products</h3>
+            <div class="products">
+
+                  {% for product in products %}
+                      <a href="/load-product/{{product.id}}">
+                        <div class='product-item' >
+                            <div class="product" >
+                                <img src="{{product.mainImg}}" alt="" />
+                                <div class="product-data">
+                                    <h6>{{product.title}}</h6>
+                                    <p>{{product.description}}</p>
+                                    <h5>&#8377; {{product.discountedPrice}} <s>{{product.price}}</s><p>( {{product.discount}}% off)</p></h5>
+                                </div>
+                            </div>
+                        </div>
+                      </a>
+                  {% endfor %}
+ 
+            </div>
+        </div>
+    </div>
+
+
+      <Footer />
+    </div>
+
+{% endblock %}
